@@ -23,7 +23,13 @@ from keras.models import load_model
 
 from PIL import Image
 
-image_path = ROOT_DIR + '/SentimentAnalysis/change-mood-positive-and-good-vs-negative-vector-36741242.jpg'
+last = ROOT_DIR.split('/')[-1]
+if last == 'SentimentAnalysis':
+    pass
+else:
+    ROOT_DIR = ROOT_DIR+'/SentimentAnalysis'
+
+image_path = ROOT_DIR + '/change-mood-positive-and-good-vs-negative-vector-36741242.jpg'
 image = Image.open(image_path)
 #displaying the image on streamlit app
 st.image(image, caption=None)
@@ -59,7 +65,7 @@ tk = TweetTokenizer()
 stemmer = SnowballStemmer('english').stem
 lemmatizer = WordNetLemmatizer().lemmatize
 
-path = ROOT_DIR+'/SentimentAnalysis/models/'
+path = ROOT_DIR+'/models/'
 filenames = os.listdir(path)
 mdls = {}
 
